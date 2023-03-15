@@ -1,0 +1,6 @@
+name: DashAPI
+version: '${project.version}'
+main: com.lichenaut.dashapi.DashAPI
+api-version: 1.13
+author: lichenaut
+description: Set the velocity of any entity in blocks instead of vectors.
