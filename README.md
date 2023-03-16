@@ -4,13 +4,13 @@ DashAPI is a Spigot / (preferrably) Paper plugin that adds a function for settin
 
 Include the .jar file in your "plugins" folder and add this dependency to your pom.xml. Then, add this as a dependency in your "plugin.yml" file.
 
-![image](https://user-images.githubusercontent.com/81048400/225530011-7ba0fa9f-205e-4315-90b2-43cb2f673463.png)
-
         <dependency>
             <groupId>io.github.lichenaut</groupId>
             <artifactId>DashAPI</artifactId>
             <version>1.0.4</version>
         </dependency>
+        
+![image](https://user-images.githubusercontent.com/81048400/225530011-7ba0fa9f-205e-4315-90b2-43cb2f673463.png)
         
 For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.4
 
