@@ -35,3 +35,4 @@ The maximum number of blocks an entity can be launched horizontally is 43.
 The base function's defaults for "additive", "adjustHorizontal", and "adjustVertical", are "false", "true", and "false", respectively.
 
 [![Github All Releases](https://img.shields.io/github/downloads/lichenaut/DashAPI/total.svg)]()
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI)
