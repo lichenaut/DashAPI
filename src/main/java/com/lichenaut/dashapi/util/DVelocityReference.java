@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public class DVelocityReference {
 
+    public static Double getXZVelocities(int blocks) {return blocks*0.090069767;}
+
     public static HashMap<Integer, Double> getYVelocities() {
         HashMap<Integer, Double> yVelocities = new HashMap<>(61);
         yVelocities.put(0,0.0);
@@ -68,54 +70,5 @@ public class DVelocityReference {
         yVelocities.put(59,3.82);
         yVelocities.put(60,3.861);
         return yVelocities;
-    }
-
-    public static HashMap<Integer, Double> getXZVelocities() {
-        HashMap<Integer, Double> xzVelocities = new HashMap<>(44);
-        xzVelocities.put(0,0.0);
-        xzVelocities.put(1,0.093);
-        xzVelocities.put(2,0.183);
-        xzVelocities.put(3,0.273);
-        xzVelocities.put(4,0.363);
-        xzVelocities.put(5,0.453);
-        xzVelocities.put(6,0.543);
-        xzVelocities.put(7,0.633);
-        xzVelocities.put(8,0.723);
-        xzVelocities.put(9,0.813);
-        xzVelocities.put(10,0.903);
-        xzVelocities.put(11,0.993);
-        xzVelocities.put(12,1.083);
-        xzVelocities.put(13,1.173);
-        xzVelocities.put(14,1.263);
-        xzVelocities.put(15,1.353);
-        xzVelocities.put(16,1.443);
-        xzVelocities.put(17,1.533);
-        xzVelocities.put(18,1.623);
-        xzVelocities.put(19,1.713);
-        xzVelocities.put(20,1.803);
-        xzVelocities.put(21,1.893);
-        xzVelocities.put(22,1.983);
-        xzVelocities.put(23,2.073);
-        xzVelocities.put(24,2.163);
-        xzVelocities.put(25,2.253);
-        xzVelocities.put(26,2.343);
-        xzVelocities.put(27,2.433);
-        xzVelocities.put(28,2.523);
-        xzVelocities.put(29,2.613);
-        xzVelocities.put(30,2.703);
-        xzVelocities.put(31,2.793);
-        xzVelocities.put(32,2.883);
-        xzVelocities.put(33,2.973);
-        xzVelocities.put(34,3.063);
-        xzVelocities.put(35,3.153);
-        xzVelocities.put(36,3.243);
-        xzVelocities.put(37,3.333);
-        xzVelocities.put(38,3.423);
-        xzVelocities.put(39,3.513);
-        xzVelocities.put(40,3.603);
-        xzVelocities.put(41,3.693);
-        xzVelocities.put(42,3.783);
-        xzVelocities.put(43,3.873);
-        return xzVelocities;
     }
 }
