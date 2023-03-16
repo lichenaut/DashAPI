@@ -1,9 +1,7 @@
 package com.lichenaut.dashapi;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Entity;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import util.DDirectoryMaker;
@@ -12,7 +10,7 @@ import util.DVelocityReference;
 
 import java.util.logging.Logger;
 
-public final class DashAPI extends JavaPlugin implements Listener {
+public final class DashAPI extends JavaPlugin {
 
     private Logger log;
 
@@ -35,13 +33,12 @@ public final class DashAPI extends JavaPlugin implements Listener {
 
             String dataFolderPath = getDataFolder().getPath();
             new DDirectoryMaker(plugin).makeDir(dataFolderPath);
-            Bukkit.getPluginManager().registerEvents(this, this);
         }
     }
 
     public Logger getLog() {return log;}
     public int getNeg(boolean isNeg) {if (isNeg) {return -1;} else {return 1;}}
-    public double getVertical(boolean adjustVertical, Vector direction) {if (adjustVertical) {return direction.getY();} else {return 1;}}
+    public double getVert(boolean adjustVertical, Vector direction) {if (adjustVertical) {return direction.getY();} else {return 1;}}
 
     /**
      *
@@ -111,9 +108,9 @@ public final class DashAPI extends JavaPlugin implements Listener {
             newX = DVelocityReference.getXZVelocities().get(x)*getNeg(xNeg);
         }
         if (additive) {e.setVelocity(new Vector(newX+e.getVelocity().getX(),
-                DVelocityReference.getYVelocities().get(y)*getNeg(yNeg)*getVertical(adjustVertical, e.getLocation().getDirection())+e.getVelocity().getY(),
+                DVelocityReference.getYVelocities().get(y)*getNeg(yNeg)*getVert(adjustVertical, e.getLocation().getDirection())+e.getVelocity().getY(),
                 newZ+e.getVelocity().getZ()));
-        } else {e.setVelocity(new Vector(newX, DVelocityReference.getYVelocities().get(y)*getNeg(yNeg)*getVertical(adjustVertical,
+        } else {e.setVelocity(new Vector(newX, DVelocityReference.getYVelocities().get(y)*getNeg(yNeg)*getVert(adjustVertical,
                 e.getLocation().getDirection()), newZ));}
     }
 }
