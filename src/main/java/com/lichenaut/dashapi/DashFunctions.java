@@ -2,7 +2,7 @@ package com.lichenaut.dashapi;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
-import util.DVelocityReference;
+import com.lichenaut.dashapi.util.DVelocityReference;
 
 public class DashFunctions {
 

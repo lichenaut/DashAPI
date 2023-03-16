@@ -1,4 +1,4 @@
-package util;
+package com.lichenaut.dashapi.util;
 
 import com.lichenaut.dashapi.DashAPI;
 import org.bukkit.Bukkit;
@@ -19,7 +19,7 @@ public class DUpdateChecker {
 
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + 01134).openStream(); Scanner scanner = new Scanner(inputStream)) {
+            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + 108639).openStream(); Scanner scanner = new Scanner(inputStream)) {
                 if (scanner.hasNext()) {consumer.accept(scanner.next());}
             } catch (IOException e) {
                 dPlugin.getLog().warning("Unable to check for updates!");

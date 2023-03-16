@@ -1,4 +1,4 @@
-package util;
+package com.lichenaut.dashapi.util;
 
 import com.lichenaut.dashapi.DashAPI;
 
