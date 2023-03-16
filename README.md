@@ -7,10 +7,10 @@ Include the .jar file in your "plugins" folder and add this dependency to your p
         <dependency>
             <groupId>io.github.lichenaut</groupId>
             <artifactId>DashAPI</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.4</version>
         </dependency>
         
-For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.2
+For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.4
 
 To get an instance of this API for use, define a "DashFunctions" object with "DashAPI.getInstance()":
 
