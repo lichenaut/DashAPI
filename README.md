@@ -2,7 +2,7 @@
 
 DashAPI is a Spigot / (preferrably) Paper plugin that adds a function for setting the velocity of entities in terms of blocks rather than a vector.
 
-Include the .jar file in your "plugins" folder and add this dependency to your pom.xml. Then, add this as a dependency in your "plugin.yml" file.
+Include the .jar file in your "plugins" folder and add this dependency to your pom.xml.
 
         <dependency>
             <groupId>io.github.lichenaut</groupId>
@@ -10,9 +10,11 @@ Include the .jar file in your "plugins" folder and add this dependency to your p
             <version>1.0.4</version>
         </dependency>
         
-![image](https://user-images.githubusercontent.com/81048400/225530011-7ba0fa9f-205e-4315-90b2-43cb2f673463.png)
-        
 For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.4
+
+Then, add this as a dependency in your "plugin.yml" file.
+
+![image](https://user-images.githubusercontent.com/81048400/225530011-7ba0fa9f-205e-4315-90b2-43cb2f673463.png)
 
 To get an instance of this API for use, define a "DashFunctions" object with "DashAPI.getInstance()":
 
