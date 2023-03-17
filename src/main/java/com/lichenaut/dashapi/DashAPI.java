@@ -28,6 +28,7 @@ public final class DashAPI extends JavaPlugin {
             log.info("Plugin disabled in config.yml.");
         } else {
             new DUpdateChecker(plugin, plugin).getVersion(version -> {if (!this.getDescription().getVersion().equals(version)) {getLog().info("Update available.");}});
+
             String dataFolderPath = getDataFolder().getPath();
             new DDirectoryMaker(plugin).makeDir(dataFolderPath);
         }
