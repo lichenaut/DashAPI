@@ -24,13 +24,13 @@ Example #1 (base function):
 
 ![image](https://user-images.githubusercontent.com/81048400/225510373-f0dd76f5-1cfe-4f51-9e91-00a48710b790.png)
 
-When a player interacts with an entity, the entity will be dashed 10 blocks forward, 10 blocks up, and 10 blocks left, relative to the direction that entity is looking.
+When a player interacts with an entity, the entity will be dashed 10 blocks forward, 10 blocks up, and 10 blocks left on Minecraft's x, y, and z axes, respectively.
 
 Example #2 (adjustments):
 
-![image](https://user-images.githubusercontent.com/81048400/225510778-2930ace2-b573-43e3-8e06-d89c0a2a3095.png)
+![image](https://user-images.githubusercontent.com/81048400/226056873-b857b8de-0ae9-4e9a-8d50-75b268d8291e.png)
 
-When a player crouches or uncrouches, they will be dashed forward on Minecraft's x-axis (not relative to looking direction due to "adjustHorizontal" being false), but this time the player's current velocity will be added to the dash due to "additive" being true. Additionally, as the maximum number of blocks an entity can be dashed vertically is 60 (43 horizontally), the plugin reduces the value 100 to 60 and dashes the player up 60 blocks. Finally, because "adjustVertical" is set to true, the player's looking up or down affects the verticality of the dash.
+When a player crouches or uncrouches, they will be dashed forward relative to their looking direction due to "adjustHorizontal" being true, and the player's current velocity will be added to the dash due to "additive" being true. Additionally, as the maximum number of blocks an entity can be dashed vertically is 60 (43 horizontally), the plugin reduces the value 100 to 60 and dashes the player up 60 blocks. Finally, because "adjustVertical" is set to true, the player's looking up or down affects the y of the dash.
 
 Example #3 (int and Double inputs):
 
