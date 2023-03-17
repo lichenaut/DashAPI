@@ -26,7 +26,7 @@ Example #1 (base function):
 
 When a player interacts with an entity, the entity will be dashed 10 blocks forward, 10 blocks up, and 10 blocks left, relative to the direction that entity is looking.
 
-Example #2 (optioned function):
+Example #2 (adjustments):
 
 ![image](https://user-images.githubusercontent.com/81048400/225510778-2930ace2-b573-43e3-8e06-d89c0a2a3095.png)
 
