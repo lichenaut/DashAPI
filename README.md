@@ -36,13 +36,13 @@ Example #3 (int and Double inputs):
 
 ![image](https://user-images.githubusercontent.com/81048400/226048635-8c145d94-146f-440c-a9c2-e4274a15b9c5.png)
 
-Int values for block distance and Double values for velocity can be used in any combination, and in this example it is (int, Double, int). In this example, when a player clicks an entity, the y value of that player's looking direction is multiplied by 4 and made negative, which means that if a player looks down to click an entity, they will be dashed with a high positive y velocity.
+Int values for block distance and Double values for velocity can be used in any combination, and in this example it is (int, Double, int). In this example, when a player interacts with an entity, the y value of that player's looking direction is multiplied by 4 and made negative, which means that if a player looks down to click an entity, they will be dashed with a high positive y velocity.
 
 Example #4 (multipliers):
 
 ![image](https://user-images.githubusercontent.com/81048400/226046720-45d2d5f0-9868-4a6e-822c-bc011ea43a94.png)
 
-The first dash is applied to the entity interacted by the player, based off of the direction the player is facing, creating a knockback effect. The second dash is applied to the player, based off of the velocity of the clicked entity, creating a pull effect. Additionally, the pull effect is halved with the x, y, and z multiplers, meaning that, if repeated, the clicked entity will eventually be too far away for the player to click.
+The first dash is applied to the entity interacted by the player, based off of the direction the player is facing, creating a knockback effect. The second dash is applied to the player, based off of the velocity of the clicked entity, creating a pull effect. Additionally, the pull effect is halved with the x, y, and z multiplers, meaning that, if repeated, the interacted entity will eventually be too far away for the player to interact with.
 
 [![Github All Releases](https://img.shields.io/github/downloads/lichenaut/DashAPI/total.svg)]()
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI)
