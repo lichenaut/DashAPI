@@ -34,7 +34,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-commons:6.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-tree:6.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-analysis:6.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.bstats:bstats-bukkit:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.bstats:bstats-base:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.bstats:bstats-bukkit:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.bstats:bstats-base:3.0.1" level="project" />
   </component>
 </module>

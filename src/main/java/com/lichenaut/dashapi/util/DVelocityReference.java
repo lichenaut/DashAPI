@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class DVelocityReference {
 
-    public static Double getXZVelocities(int blocks) {return blocks*0.090069767;}
+    public static Double getXZVelocities(int blocks) {return blocks*0.090069767;}//3.873 divided by 43
 
     public static HashMap<Integer, Double> getYVelocities() {
         HashMap<Integer, Double> yVelocities = new HashMap<>(61);
