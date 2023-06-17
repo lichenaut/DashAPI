@@ -10,7 +10,7 @@ To add to your project, add the .jar file to your "plugins" folder and add this 
             <version>1.0.8</version>
         </dependency>
         
-For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.6
+For tools other than Maven: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.8
 
 Then, add this as a dependency in your "plugin.yml" file.
 
