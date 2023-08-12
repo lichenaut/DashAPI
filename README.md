@@ -2,7 +2,7 @@
 
 DashAPI is a Spigot / (preferrably) Paper plugin that adds a function for setting the velocity of entities in terms of blocks rather than a vector.
 
-To add to your project, add the .jar file to your "plugins" folder and add this dependency to your pom.xml.
+To add to your project, add the .jar file to your "plugins" folder or add this dependency to your pom.xml.
 
         <dependency>
             <groupId>io.github.lichenaut</groupId>
