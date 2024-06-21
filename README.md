@@ -11,7 +11,7 @@ First, include DashAPI in your project. Here is a build tool list if you don't w
 
 Then, add this as a dependency in your "plugin.yml" file.
 
-```depend: [DashAPI]```
+`depend: [DashAPI]`
 
 To get an instance of this API for use, define a "DashFunctions" object with "DashAPI.getInstance()":
 
@@ -40,7 +40,7 @@ Example #2 (adjustments):
 ```
 @EventHandler
 public void onCrouch(PlayerToggleSneakEvent event) {
-    api.dash(event.getPlayer(), 10, 100, 0, true, true, true, true);
+    api.dash(event.getPlayer(), 10, 100, 0, true, true, true);
 }
 ```
 

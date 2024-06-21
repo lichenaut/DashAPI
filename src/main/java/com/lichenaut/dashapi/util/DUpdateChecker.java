@@ -22,8 +22,11 @@ public class DUpdateChecker {
 
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + 108639).openStream(); Scanner scanner = new
-                    Scanner(inputStream)) {if (scanner.hasNext()) {consumer.accept(scanner.next());}
+            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + 108639)
+                    .openStream(); Scanner scanner = new Scanner(inputStream)) {
+                if (scanner.hasNext()) {
+                    consumer.accept(scanner.next());
+                }
             } catch (IOException e) {
                 main.getLog().error("Unable to check for updates!\n{}", e.getMessage());
             }

@@ -1,10 +1,10 @@
 package com.lichenaut.dashapi;
 
+import com.lichenaut.dashapi.util.DUpdateChecker;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
-import com.lichenaut.dashapi.util.DUpdateChecker;
-import org.apache.logging.log4j.Logger;
 
 public final class Main extends JavaPlugin {
 
@@ -14,7 +14,11 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         new Metrics(this, 17969);
-        new DUpdateChecker(this, this).getVersion(version -> {if (!this.getDescription().getVersion().equals(version)) {getLog().info("Update available.");}});
+        new DUpdateChecker(this, this).getVersion(version -> {
+            if (!this.getDescription().getVersion().equals(version)) {
+                getLog().info("Update available.");
+            }
+        });
     }
 
     @SuppressWarnings("unused")
@@ -25,5 +29,4 @@ public final class Main extends JavaPlugin {
     public Logger getLog() {
         return log;
     }
-
 }

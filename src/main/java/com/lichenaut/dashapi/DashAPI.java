@@ -11,7 +11,7 @@ public class DashAPI {
         int valuesLength = values.length;
         int[][] processedValues = new int[valuesLength][2];
         for (int i = 0; i < valuesLength; i++) {
-            int[] valueCheck = (values[i] < 0) ? new int[] {Math.abs(values[i]), -1} : new int[] {values[i], 1};
+            int[] valueCheck = (values[i] < 0) ? new int[] { Math.abs(values[i]), -1 } : new int[] { values[i], 1 };
             int maxValue;
             if (xyz > 99) {
                 maxValue = 43;
@@ -30,44 +30,38 @@ public class DashAPI {
         return processedValues;
     }
 
-    private <T extends Number> void dashMath(Entity e, T x, T y, T z, int xNeg, int yNeg, int zNeg) {
-        double newX, newZ, newY;
+    private <T extends Number> double[] prepMath(Entity e, T x, T y, T z) {
+        double newX, newY, newZ;
         if (x instanceof Integer) {
-            newX = DVelocityReference.getXZVelocities((int) x) * xNeg;
+            newX = DVelocityReference.getXZVelocities((int) x);
         } else {
             newX = (double) x;
         }
         if (y instanceof Integer) {
-            newY = DVelocityReference.getYVelocities().get((int) y) * yNeg;
+            newY = DVelocityReference.getYVelocities().get((int) y);
         } else {
             newY = (double) y;
         }
         if (z instanceof Integer) {
-            newZ = DVelocityReference.getXZVelocities((int) z) * zNeg;
+            newZ = DVelocityReference.getXZVelocities((int) z);
         } else {
             newZ = (double) z;
         }
 
-        e.setVelocity(new Vector(newX, newY, newZ));
+        return new double[] { newX, newY, newZ };
     }
 
-    private <T extends Number> void dashMath(Entity e, T x, T y, T z, int xNeg, int yNeg, int zNeg, boolean additive, boolean adjustHorizontal, boolean adjustVertical) {
-        double newX, newZ, newY;
-        if (x instanceof Integer) {
-            newX = DVelocityReference.getXZVelocities((int) x) * xNeg;
-        } else {
-            newX = (double) x;
-        }
-        if (y instanceof Integer) {
-            newY = DVelocityReference.getYVelocities().get((int) y) * yNeg;
-        } else {
-            newY = (double) y;
-        }
-        if (z instanceof Integer) {
-            newZ = DVelocityReference.getXZVelocities((int) z) * zNeg;
-        } else {
-            newZ = (double) z;
-        }
+    private <T extends Number> void dashMath(Entity e, T x, T y, T z) {
+        double[] newValues = prepMath(e, x, y, z);
+        e.setVelocity(new Vector(newValues[0], newValues[1], newValues[2]));
+    }
+
+    private <T extends Number> void dashMath(Entity e, T x, T y, T z, boolean additive, boolean adjustHorizontal,
+            boolean adjustVertical) {
+        double[] newValues = prepMath(e, x, y, z);
+        double newX = newValues[0];
+        double newY = newValues[1];
+        double newZ = newValues[2];
 
         if (adjustHorizontal) {
             Vector entityDir = e.getLocation().getDirection();
@@ -89,18 +83,18 @@ public class DashAPI {
             newX = Math.sin(newDashAngle / convertDegrees) * velocityLength;
         }
 
+        double vert = adjustVertical ? e.getLocation().getDirection().getY() : 1;
         Vector dashVector;
         if (additive) {
             Vector entityVelocity = e.getVelocity();
             dashVector = new Vector(
-                    newX + entityVelocity.getX(), newY
-                    * (adjustVertical ? e.getLocation().getDirection().getY() : 1)
-                    + entityVelocity.getY(),
+                    newX + entityVelocity.getX(),
+                    newY * vert + entityVelocity.getY(),
                     newZ + entityVelocity.getZ());
         } else {
             dashVector = new Vector(newX,
                     newY
-                            * (adjustVertical ? e.getLocation().getDirection().getY() : 1),
+                            * vert,
                     newZ);
         }
         e.setVelocity(dashVector);
@@ -119,13 +113,8 @@ public class DashAPI {
      */
     public void dash(Entity e, int x, int y, int z) {
         int[][] processedValues = processValues(111, x, y, z);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        y = processedValues[1][0];
-        int yNeg = processedValues[1][1];
-        z = processedValues[2][0];
-        int zNeg = processedValues[2][1];
-        dashMath(e, x, y, z, xNeg, yNeg, zNeg);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1],
+                processedValues[2][0] * processedValues[2][1]);
     }
 
     /**
@@ -141,11 +130,7 @@ public class DashAPI {
      */
     public void dash(Entity e, int x, int y, Double z) {
         int[][] processedValues = processValues(110, x, y);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        y = processedValues[1][0];
-        int yNeg = processedValues[1][1];
-        dashMath(e, x, y, z, xNeg, yNeg, 1);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1], z);
     }
 
     /**
@@ -161,9 +146,7 @@ public class DashAPI {
      */
     public void dash(Entity e, int x, Double y, Double z) {
         int[][] processedValues = processValues(100, x);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        dashMath(e, x, y, z, xNeg, 1, 1);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], y, z);
     }
 
     /**
@@ -192,9 +175,7 @@ public class DashAPI {
      */
     public void dash(Entity e, Double x, int y, Double z) {
         int[][] processedValues = processValues(10, y);
-        y = processedValues[0][0];
-        int yNeg = processedValues[0][1];
-        dashMath(e, x, y, z, 1, yNeg, 1);
+        dashMath(e, x, processedValues[0][0] * processedValues[0][1], z);
     }
 
     /**
@@ -209,11 +190,7 @@ public class DashAPI {
      */
     public void dash(Entity e, Double x, int y, int z) {
         int[][] processedValues = processValues(11, y, z);
-        y = processedValues[0][0];
-        int yNeg = processedValues[0][1];
-        z = processedValues[1][0];
-        int zNeg = processedValues[1][1];
-        dashMath(e, x, y, z, 1, yNeg, zNeg);
+        dashMath(e, x, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1]);
     }
 
     /**
@@ -228,9 +205,7 @@ public class DashAPI {
      */
     public void dash(Entity e, Double x, Double y, int z) {
         int[][] processedValues = processValues(1, z);
-        z = processedValues[0][0];
-        int zNeg = processedValues[0][1];
-        dashMath(e, x, y, z, 1, 1, zNeg);
+        dashMath(e, x, y, processedValues[0][0] * processedValues[0][1]);
     }
 
     /**
@@ -246,11 +221,7 @@ public class DashAPI {
      */
     public void dash(Entity e, int x, Double y, int z) {
         int[][] processedValues = processValues(101, x, z);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        z = processedValues[1][0];
-        int zNeg = processedValues[1][1];
-        dashMath(e, x, y, z, xNeg, 1, zNeg);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], y, processedValues[1][0] * processedValues[1][1]);
     }
 
     /**
@@ -275,13 +246,8 @@ public class DashAPI {
     public void dash(Entity e, int x, int y, int z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(111, x, y, z);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        y = processedValues[1][0];
-        int yNeg = processedValues[1][1];
-        z = processedValues[2][0];
-        int zNeg = processedValues[2][1];
-        dashMath(e, x, y, z, xNeg, yNeg, zNeg, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1],
+                processedValues[2][0] * processedValues[2][1], additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -305,11 +271,8 @@ public class DashAPI {
     public void dash(Entity e, int x, int y, Double z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(110, x, y);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        y = processedValues[1][0];
-        int yNeg = processedValues[1][1];
-        dashMath(e, x, y, z, xNeg, yNeg, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1], z,
+                additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -332,9 +295,7 @@ public class DashAPI {
     public void dash(Entity e, int x, Double y, Double z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(100, x);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        dashMath(e, x, y, z, xNeg, 1, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], y, z, additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -355,7 +316,7 @@ public class DashAPI {
      */
     public void dash(Entity e, Double x, Double y, Double z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
-        dashMath(e, x, y, z, 1, 1, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, x, y, z, additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -378,9 +339,7 @@ public class DashAPI {
     public void dash(Entity e, Double x, int y, Double z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(10, y);
-        y = processedValues[0][0];
-        int yNeg = processedValues[0][1];
-        dashMath(e, x, y, z, 1, yNeg, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, x, processedValues[0][0] * processedValues[0][1], z, additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -404,11 +363,8 @@ public class DashAPI {
     public void dash(Entity e, Double x, int y, int z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(11, y, z);
-        y = processedValues[0][0];
-        int yNeg = processedValues[0][1];
-        z = processedValues[1][0];
-        int zNeg = processedValues[1][1];
-        dashMath(e, x, y, z, 1, yNeg, zNeg, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, x, processedValues[0][0] * processedValues[0][1], processedValues[1][0] * processedValues[1][1],
+                additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -431,9 +387,7 @@ public class DashAPI {
     public void dash(Entity e, Double x, Double y, int z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(1, z);
-        z = processedValues[0][0];
-        int zNeg = processedValues[0][1];
-        dashMath(e, x, y, z, 1, 1, zNeg, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, x, y, processedValues[0][0] * processedValues[0][1], additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -457,11 +411,8 @@ public class DashAPI {
     public void dash(Entity e, int x, Double y, int z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
         int[][] processedValues = processValues(101, x, z);
-        x = processedValues[0][0];
-        int xNeg = processedValues[0][1];
-        z = processedValues[1][0];
-        int zNeg = processedValues[1][1];
-        dashMath(e, x, y, z, xNeg, 1, zNeg, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, processedValues[0][0] * processedValues[0][1], y, processedValues[1][0] * processedValues[1][1],
+                additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -497,7 +448,7 @@ public class DashAPI {
      *                         the dash vector.
      */
     public void dash(Entity e, Vector v, boolean additive, boolean adjustHorizontal, boolean adjustVertical) {
-        dashMath(e, v.getX(), v.getY(), v.getZ(), 1, 1, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, v.getX(), v.getY(), v.getZ(), additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -516,7 +467,7 @@ public class DashAPI {
      */
     public void dash(Entity e, Vector v, Double x, Double y, Double z, boolean additive, boolean adjustHorizontal,
             boolean adjustVertical) {
-        dashMath(e, v.getX() * x, v.getY() * y, v.getZ() * z, 1, 1, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, v.getX() * x, v.getY() * y, v.getZ() * z, additive, adjustHorizontal, adjustVertical);
     }
 
     /**
@@ -535,6 +486,6 @@ public class DashAPI {
      */
     public void dash(Entity e, Vector v, boolean additive, boolean adjustHorizontal, boolean adjustVertical, Double x,
             Double y, Double z) {
-        dashMath(e, v.getX() * x, v.getY() * y, v.getZ() * z, 1, 1, 1, additive, adjustHorizontal, adjustVertical);
+        dashMath(e, v.getX() * x, v.getY() * y, v.getZ() * z, additive, adjustHorizontal, adjustVertical);
     }
 }
