@@ -2,7 +2,7 @@ package com.lichenaut.dashapi.util;
 
 import java.util.HashMap;
 
-public class DVelocityReference {
+public class VelocityReference {
 
     public static Double getXZVelocities(int blocks) {
         return blocks * 0.090069767;

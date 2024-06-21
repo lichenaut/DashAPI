@@ -10,12 +10,12 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
-public class DUpdateChecker {
+public class UpdateChecker {
 
     private final JavaPlugin plugin;
     private final Main main;
 
-    public DUpdateChecker(JavaPlugin plugin, Main main) {
+    public UpdateChecker(JavaPlugin plugin, Main main) {
         this.plugin = plugin;
         this.main = main;
     }

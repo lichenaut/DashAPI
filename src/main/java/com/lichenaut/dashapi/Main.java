@@ -1,6 +1,6 @@
 package com.lichenaut.dashapi;
 
-import com.lichenaut.dashapi.util.DUpdateChecker;
+import com.lichenaut.dashapi.util.UpdateChecker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bstats.bukkit.Metrics;
@@ -14,7 +14,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         new Metrics(this, 17969);
-        new DUpdateChecker(this, this).getVersion(version -> {
+        new UpdateChecker(this, this).getVersion(version -> {
             if (!this.getDescription().getVersion().equals(version)) {
                 getLog().info("Update available.");
             }

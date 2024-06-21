@@ -2,7 +2,7 @@ package com.lichenaut.dashapi;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
-import com.lichenaut.dashapi.util.DVelocityReference;
+import com.lichenaut.dashapi.util.VelocityReference;
 
 @SuppressWarnings("unused")
 public class DashAPI {
@@ -33,17 +33,17 @@ public class DashAPI {
     private <T extends Number> double[] prepMath(Entity e, T x, T y, T z) {
         double newX, newY, newZ;
         if (x instanceof Integer) {
-            newX = DVelocityReference.getXZVelocities((int) x);
+            newX = VelocityReference.getXZVelocities((int) x);
         } else {
             newX = (double) x;
         }
         if (y instanceof Integer) {
-            newY = DVelocityReference.getYVelocities().get((int) y);
+            newY = VelocityReference.getYVelocities().get((int) y);
         } else {
             newY = (double) y;
         }
         if (z instanceof Integer) {
-            newZ = DVelocityReference.getXZVelocities((int) z);
+            newZ = VelocityReference.getXZVelocities((int) z);
         } else {
             newZ = (double) z;
         }
