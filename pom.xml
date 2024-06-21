@@ -6,11 +6,11 @@
 
     <groupId>io.github.lichenaut</groupId>
     <artifactId>DashAPI</artifactId>
-    <version>1.0.8</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>DashAPI</name>
-    <description>Minecraft API plugin that adds a function for setting the velocity of entities in terms of blocks rather than a vector.</description>
+    <description>Adds "dash()": set the velocity of entities in terms of blocks instead of a vector.</description>
     <url>https://github.com/lichenaut/DashAPI</url>
 
     <properties>
@@ -27,8 +27,7 @@
 
     <developers>
         <developer>
-            <name>Matthew Owen</name>
-            <email>mt0n@tutanota.com</email>
+            <name>lichenaut</name>
             <organization>io.github.lichenaut</organization>
             <organizationUrl>https://github.com/lichenaut</organizationUrl>
         </developer>
@@ -149,8 +148,8 @@
 
     <repositories>
         <repository>
-            <id>papermc-repo</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -160,10 +159,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.destroystokyo.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>1.13-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.21-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.23.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.23.1</version>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>

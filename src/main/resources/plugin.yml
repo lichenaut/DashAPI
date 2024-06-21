@@ -1,6 +1,6 @@
 name: DashAPI
-version: '${project.version}'
+version: "${project.version}"
 main: com.lichenaut.dashapi.DashAPI
-api-version: 1.13
+api-version: 1.21
 author: lichenaut
-description: Set the velocity of any entity in blocks instead of vectors.
+description: Adds "dash()" -> set the velocity of entities in terms of blocks instead of a vector.

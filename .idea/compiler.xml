@@ -9,8 +9,5 @@
         <module name="DashAPI" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="DashAPI" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
