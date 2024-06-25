@@ -3,13 +3,10 @@
 DashAPI adds "dash()": set the velocity of entities in terms of blocks instead of a vector.
 
 [![Github All Releases](https://img.shields.io/github/downloads/lichenaut/DashAPI/total.svg)]()
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.lichenaut/DashAPI)
 
 ## Walkthrough
 
-First, include DashAPI in your project. Here is a build tool list if you don't want to manually download it in: https://central.sonatype.com/artifact/io.github.lichenaut/DashAPI/1.0.8
-
-Then, add this as a dependency in your "plugin.yml" file.
+First, include DashAPI in your project. Then, add this as a dependency in your "plugin.yml" file.
 
 `depend: [DashAPI]`
 
