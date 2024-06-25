@@ -38,7 +38,15 @@ public class DashAPI {
             newX = (double) x;
         }
         if (y instanceof Integer) {
-            newY = VelocityReference.getYVelocities().get((int) y);
+            int yInt = (Integer) y;
+            boolean isNegative = yInt < 0;
+            if (isNegative) {
+                yInt = Math.abs(yInt);
+            }
+            newY = VelocityReference.getYVelocities().get(yInt);
+            if (isNegative) {
+                newY *= -1;
+            }
         } else {
             newY = (double) y;
         }
